@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/assets/js/index.js',
   output: {
     path: __dirname + "/public/assets/js/",
-    filename: 'scripts.min.js'
+    filename: 'main.min.js'
   },
   plugins: debug ? [
     new BrowserSyncPlugin({
@@ -26,7 +26,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: debug ? 'babel-loader' : 'strip?strip[]=console.log!babel-loader'
+        loader: debug ? 'babel-loader' : 'strip?strip[]=console.log!babel-loader?cacheDirectory'
       }
     ]
   },

@@ -5,8 +5,10 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "NODE_ENV=development webpack --inline --progress --colors --watch",
+    "build:clean": "rm -rf public",
     "build:bundle": "NODE_ENV=production webpack --progress --colors",
-    "build": "npm run build:bundle"
+    "build:php": "cp **/*.php public",
+    "build": "npm run build:clean && npm run build:bundle && npm run build:php"
   },
   "author": "author <author@email.com>",
   "license": "MIT",
