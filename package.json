@@ -4,11 +4,12 @@
   "description": "Empty Webpack Project",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "NODE_ENV=development webpack --inline --progress --colors --watch",
+    "start": "npm run build:dev && NODE_ENV=development webpack --inline --progress --colors --watch",
     "build:clean": "rm -rf public",
     "build:bundle": "NODE_ENV=production webpack --progress --colors",
     "build:php": "cp **/*.php public",
     "build": "npm run build:clean && npm run build:bundle && npm run build:php",
+    "build:dev": "npm run build:clean && mkdir public && npm run build:php",
     "lint": "eslint src; exit 0"
   },
   "author": "author <author@email.com>",
