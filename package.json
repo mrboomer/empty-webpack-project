@@ -8,7 +8,8 @@
     "build:clean": "rm -rf public",
     "build:bundle": "NODE_ENV=production webpack --progress --colors",
     "build:php": "cp **/*.php public",
-    "build": "npm run build:clean && npm run build:bundle && npm run build:php"
+    "build": "npm run build:clean && npm run build:bundle && npm run build:php",
+    "lint": "eslint src; exit 0"
   },
   "author": "author <author@email.com>",
   "license": "MIT",
