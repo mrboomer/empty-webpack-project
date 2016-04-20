@@ -22,6 +22,15 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({ sourceMap: false, mangle: false, compress: { warnings: false }})
   ],
   module: {
+
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        include: __dirname + '/src/assets/js/'
+      }
+    ],
+
     loaders: [
       {
         test: /\.jsx?$/,
