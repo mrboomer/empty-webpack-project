@@ -8,9 +8,9 @@
     "build:clean": "rm -rf public || echo 'No Public Folder Found'",
     "build:bundle": "NODE_ENV=production webpack --progress --colors",
     "build:html": "cp **/*.{html,php} public/ || echo 'Files Not Found.'",
-    "build": "npm run build:clean && npm run build:bundle && npm run build:html",
+    "build": "npm run build:clean && npm run build:bundle",
     "build:dev": "npm run build:clean && mkdir public && npm run build:html",
-    "lint": "eslint src; exit 0"
+    "lint": "eslint src || echo 'Errors Found.'"
   },
   "author": "author <author@email.com>",
   "license": "MIT",

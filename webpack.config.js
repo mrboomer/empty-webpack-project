@@ -21,6 +21,9 @@ module.exports = {
       notify: false
     })
   ] : [
+    new ExtractTextPlugin("../css/main.min.css", {
+      allChunks: true
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ sourceMap: false, mangle: false, compress: { warnings: false }})
