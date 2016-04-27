@@ -2,6 +2,7 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   context: __dirname,
@@ -44,7 +45,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+        loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", "sass-loader"])
       },
       {
         test: /\.(html|php)$/,
@@ -52,6 +53,11 @@ module.exports = {
       }
     ]
   },
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions']
+    })
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.scss', 'html', 'php']
   }
