@@ -4,12 +4,12 @@
   "description": "Empty Webpack Project",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "npm run build:html && NODE_ENV=development webpack --inline --progress --colors --watch",
+    "start": "npm run build:dev && NODE_ENV=development webpack --inline --progress --colors --watch",
     "build:clean": "rm -rf public || echo 'No Public Folder Found'",
     "build:bundle": "NODE_ENV=production webpack --progress --colors",
-    "build:html": "cp **/*.{html,php} public/ || echo 'Files Not Found.'",
+    "build:img": "mkdir src/assets/img || echo 'Image Folder Already Exists.'",
     "build": "npm run build:clean && npm run build:bundle",
-    "build:dev": "npm run build:clean && mkdir public && npm run build:html",
+    "build:dev": "npm run build:clean && npm run build:img && mkdir public",
     "lint": "eslint src || echo 'Errors Found.'"
   },
   "author": "author <author@email.com>",
@@ -32,6 +32,7 @@
     "eslint-plugin-react": "^5.0.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "image-webpack-loader": "^1.7.0",
     "node-sass": "^3.6.0",
     "postcss-loader": "^0.8.2",
     "react": "^15.0.1",

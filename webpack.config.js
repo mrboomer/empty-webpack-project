@@ -48,6 +48,13 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", "sass-loader"])
       },
       {
+        test: /.*\.(png|jpe?g|gif|svg)$/i,
+        loaders: [
+          'file?name=../img/[name].[ext]',
+          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+        ]
+      },
+      {
         test: /\.(html|php)$/,
         loader: "file?name=../../[name].[ext]"
       }
