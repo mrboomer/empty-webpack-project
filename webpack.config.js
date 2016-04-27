@@ -51,7 +51,7 @@ module.exports = {
         test: /.*\.(png|jpe?g|gif|svg)$/i,
         loaders: [
           'file?name=../img/[name].[ext]',
-          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+          'image-webpack?{progressive:true, optimizationLevel: 5, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
         ]
       },
       {
