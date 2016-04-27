@@ -1,0 +1,36 @@
+// ========================================
+//  Media Queries
+// ========================================
+
+@mixin media($breakpoint) {
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: $mobile) { @content; }
+  }
+  @else if $breakpoint == mobile-up {
+    @media only screen and (min-width: $mobile + 1) { @content; }
+  }
+  @else if $breakpoint == xs {
+    @media only screen and (max-width: $small) { @content; }
+  }
+  @else if $breakpoint == sm-up {
+    @media only screen and (min-width: $small + 1) { @content; }
+  }
+  @else if $breakpoint == sm {
+    @media only screen and (min-width: $small + 1) and (max-width: $medium) { @content; }
+  }
+  @else if $breakpoint == sm-down {
+    @media only screen and (max-width: $medium) { @content; }
+  }
+  @else if $breakpoint == md-up {
+    @media only screen and (min-width: $medium + 1) { @content; }
+  }
+  @else if $breakpoint == md {
+    @media only screen and (min-width: $medium + 1) and (max-width: $large) { @content; }
+  }
+  @else if $breakpoint == md-down {
+    @media only screen and (max-width: $large) { @content; }
+  }
+  @else if $breakpoint == lg {
+    @media only screen and (min-width: $large + 1) { @content; }
+  }
+}

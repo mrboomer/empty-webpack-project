@@ -1,5 +1,6 @@
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
@@ -11,9 +12,12 @@ module.exports = {
     filename: 'main.min.js'
   },
   plugins: debug ? [
+    new ExtractTextPlugin("../css/main.min.css", {
+      allChunks: true
+    }),
     new BrowserSyncPlugin({
       proxy: 'http://webpack.dev/',
-      files: ['src/**/*', 'public/**/*'],
+      files: ['src/**/*', 'public/**/*.html'],
       notify: false
     })
   ] : [
@@ -22,7 +26,6 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({ sourceMap: false, mangle: false, compress: { warnings: false }})
   ],
   module: {
-
     preLoaders: [
       {
         test: /\.jsx?$/,
@@ -30,16 +33,19 @@ module.exports = {
         include: __dirname + '/src/assets/js/'
       }
     ],
-
     loaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: debug ? 'babel-loader' : 'strip?strip[]=console.log!babel-loader?cacheDirectory'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.css', '.scss']
   }
 };
