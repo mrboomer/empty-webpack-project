@@ -17,7 +17,7 @@ module.exports = {
     }),
     new BrowserSyncPlugin({
       proxy: 'http://webpack.dev/',
-      files: ['src/**/*', 'public/**/*.html'],
+      files: ['src/**/*'],
       notify: false
     })
   ] : [
@@ -42,10 +42,14 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+      },
+      {
+        test: /\.(html|php)$/,
+        loader: "file?name=../../[name].[ext]"
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css', '.scss']
+    extensions: ['', '.js', '.jsx', '.css', '.scss', 'html', 'php']
   }
 };
