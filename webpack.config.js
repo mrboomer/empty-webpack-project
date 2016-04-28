@@ -7,7 +7,7 @@ var autoprefixer = require('autoprefixer');
 module.exports = {
   context: __dirname,
   devtool: debug ? "inline-sourcemap" : null,
-  entry: './src/assets/js/index.js',
+  entry: './src/assets/js/entry.js',
   output: {
     path: __dirname + "/public/assets/js/",
     filename: 'main.min.js'
